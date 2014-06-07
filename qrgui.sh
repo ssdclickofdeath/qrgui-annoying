@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ICON=qricon.png
-
+TITLE="Qrgui (UNREGISTERED)"
 #Checks if qrencode is installed.
 qrencode -o /dev/null "Test"
 
@@ -24,7 +24,7 @@ if  [ $? = 127 ]; then
     echo -e "Qrencode (The QR code generator) is not installed.";
     zenity --info \
            --window-icon=$ICON \
-           --title="QR Encoder" \
+           --title="$TITLE" \
            --width=400 \
            --text="The QR code generator (qrencode) is not installed. It must be installed for qrgui to work.
 
@@ -38,8 +38,25 @@ echo "Copyright (C) 2014 ssdclickofdeath"
 echo "This is free software; see README for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
+(
+echo  "20" ; sleep 1
+echo  "40" ; sleep 1
+echo  "60" ; sleep 1
+echo  "80" ; sleep 1
+echo "100" ; sleep 1
+echo # Time Done"
+) |
+zenity --progress \
+       --title="$TITLE" \
+       --text="This is the shareware version of Qrgui.
+If you like it, pay for it. (Wait five seconds)"
+
+if  [ $? = 1 ]; then
+    echo -e "\nExiting qrgui..."; exit 1;
+fi
+
 QRSTRING=$(zenity --entry \
-                  --title="QR Encoder" \
+                  --title="$TITLE" \
                   --window-icon=$ICON \
                   --text="Enter text to encode into a QR code." \
                   --width=300)
@@ -58,18 +75,35 @@ BLANK=""
 if [ $QRSTRING = $BLANK ]; then
     zenity --error \
            --width=270 \
-           --title="QR Encoder" \
+           --title="$TITLE" \
            --window-icon=$ICON \
-     --text="The text entry field cannot be blank. QR Encoder will now close." \
+     --text="The text entry field cannot be blank. Qrgui will now close." \
            --timeout=4
            echo -e "\nExiting qrgui..."
            exit 1;
 fi
 
+(
+echo  "20" ; sleep 1
+echo  "40" ; sleep 1
+echo  "60" ; sleep 1
+echo  "80" ; sleep 1
+echo "100" ; sleep 1
+echo # Time Done"
+) |
+zenity --progress \
+       --title="$TITLE" \
+       --text="This is the shareware version of Qrgui. If you like it, pay for it.
+(Wait five seconds)"
+
+if  [ $? = 1 ]; then
+    echo -e "\nExiting qrgui..."; exit 1;
+fi
+
 #Sets the variable FILENAME to the name and path to save the QR code.
 FILENAME=$(zenity --file-selection \
               --window-icon=$ICON \
-              --title="Save QR Code - QR Encoder" \
+              --title="Save QR Code - $TITLE" \
               --save \
               --confirm-overwrite)
 
@@ -89,4 +123,11 @@ if  [ $? = 0 ]; then
     echo -e "\nAn error occured."; exit 1;
 fi
 
+sleep 10
+
+zenity --info \
+       --title="Register Qrgui" \
+       --text="Register Qrgui now and run it without having to wait.
+Visit http://example.com/invalid-offers/qrgui-annoying.aspx/ to register today.
+(Or just visit https://ssdclickofdeath.github.io/qrgui/ and download the non-annoying version at no charge.)"
 exit 0;
