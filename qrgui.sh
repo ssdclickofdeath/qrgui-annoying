@@ -17,6 +17,7 @@
 
 ICON=qricon.png
 TITLE="Qrgui (UNREGISTERED)"
+
 #Checks if qrencode is installed.
 qrencode -o /dev/null "Test"
 
@@ -38,17 +39,7 @@ echo "Copyright (C) 2014 ssdclickofdeath"
 echo "This is free software; see README for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
-(
-echo  "20" ; sleep 1
-echo  "40" ; sleep 1
-echo  "60" ; sleep 1
-echo  "80" ; sleep 1
-echo "100" ; sleep 1
-echo # Time Done"
-) |
-zenity --progress \
-       --title="$TITLE" \
-       --text="This is the shareware version of Qrgui.
+(echo "20";sleep 1;echo "40";sleep 1;echo "60";sleep 1;echo "80";sleep 1;echo "100";sleep 1;echo "# Time Done")|zenity --progress --title="$TITLE" --window-icon=$ICON --text="This is the shareware version of Qrgui. 
 If you like it, pay for it. (Wait five seconds)"
 
 if  [ $? = 1 ]; then
@@ -83,18 +74,8 @@ if [ $QRSTRING = $BLANK ]; then
            exit 1;
 fi
 
-(
-echo  "20" ; sleep 1
-echo  "40" ; sleep 1
-echo  "60" ; sleep 1
-echo  "80" ; sleep 1
-echo "100" ; sleep 1
-echo # Time Done"
-) |
-zenity --progress \
-       --title="$TITLE" \
-       --text="This is the shareware version of Qrgui. If you like it, pay for it.
-(Wait five seconds)"
+(echo "20";sleep 1;echo "40";sleep 1;echo "60";sleep 1;echo "80";sleep 1;echo "100";sleep 1;echo "# Time Done")|zenity --progress --title="$TITLE" --window-icon=$ICON --text="This is the shareware version of Qrgui. 
+If you like it, pay for it. (Wait five seconds)"
 
 if  [ $? = 1 ]; then
     echo -e "\nExiting qrgui..."; exit 1;
@@ -113,17 +94,20 @@ if  [ $? = 1 ]; then
     echo -e "\nExiting qrgui..."; exit 1;
 fi
 
+(echo "20";sleep 1;echo "40";sleep 1;echo "60";sleep 1;echo "80";sleep 1;echo "100";sleep 1;echo "# Time Done")|zenity --progress --title="$TITLE" --window-icon=$ICON --text="This is the shareware version of Qrgui. 
+If you like it, pay for it. (Wait five seconds)"
+
 #Generates the QR code.
 qrencode -o "$FILENAME" "$QRSTRING"
 
 #Checks if QR code was generated successfully.
 if  [ $? = 0 ]; then
-    echo -e "\nQR code generated successfully"; exit 0;
+    echo -e "\nQR code generated successfully"
                 else
-    echo -e "\nAn error occured."; exit 1;
+    echo -e "\nAn error occurred."
 fi
 
-sleep 10
+sleep 5
 
 zenity --info \
        --title="Register Qrgui" \
