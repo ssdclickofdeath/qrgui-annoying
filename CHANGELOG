@@ -5,34 +5,5 @@ CHANGELOG
 VERSION 1.0
 ===========
 May 19, 2014
-
-Nominal 1.0 -- I can't find any way to improve it.
-Added some more comments.
-
-VERSION 0.7
-===========
-May 19, 2014
-
-Exits properly when cancel button is pressed.
-Prints program name and status info in the terminal.
-Checks if qrencode is installed.
-
-VERSION 0.6
-===========
-May 19, 2014
-
-Fixed to save with proper filename.
-Verified to work with spaces in filenames, directories
-and removable filesystems.
-
-VERSION 0.5
-===========
-May 19, 2014
-
-Basically works.
-First git upload.
-
-VERSION 0.4 AND BELOW
-=====================
-
-Pieces of junk that didn't work/I can't remember what I changed.
+Added annoying "wait five second" dialogs for every step in the program.
+Fork from a vanilla qrgui <https://github.com/ssdclickofdeath/qrgui>
